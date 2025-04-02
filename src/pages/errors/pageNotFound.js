@@ -3,7 +3,7 @@ import { Link } from "react-router";
 
 const PageNotFound = () => {
   return (
-    <div className="fixed inset-0 flex items-center justify-center w-screen h-screen">
+    <div className=" fixed inset-0 flex items-center justify-center w-screen h-screen">
       <div className="px-4 lg:py-12">
         <div className="lg:gap-4 lg:flex">
           <div className="flex flex-col items-center justify-center md:py-24 lg:py-32">

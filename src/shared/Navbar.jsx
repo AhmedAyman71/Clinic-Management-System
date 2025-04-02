@@ -1,36 +1,37 @@
 import { useState } from "react";
+import { Menu } from "lucide-react";
 import { Link } from "react-router";
 import { deleteAuth } from "../helper";
 
 const Navbar = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const logout=() => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const Logout =() => {
     deleteAuth()
   }
+
   return (
-    <nav className="bg-blue-800 text-white p-4 fixed top-0 w-full shadow-md z-10">
-      <div className="container mx-auto flex justify-between items-center">
-        <h1 className="text-xl font-bold"> Clinic_Management_System</h1>
-        <div className="hidden md:flex space-x-6">
-          <Link to="/home" className="hover:text-blue-300">Home</Link>
-          <Link to="/login" onClick={logout} className="hover:text-blue-300">Logout</Link>
+   
+      <nav className="absolute top-6 left-6 [@media_(width>768px)]:space-x-15  [@media_(width<=768px)]:right-6  flex items-center justify-between text-black text-lg">
+        <div className="flex items-center font-bold text-xl">
+          <span className=" p-2 rounded-full "><img src="/log1.png" alt="logo" 
+          className=" w-45"/></span> 
         </div>
-        <button 
-          onClick={() => setMenuOpen(!menuOpen)} 
-          className="md:hidden text-xl focus:outline-none"
-        >
-          ☰
+        <button className="md:hidden [@media_(width<=768px)]:text-[#d0e3e9]" onClick={() => setIsOpen(!isOpen)}>
+          <Menu size={28} />
         </button>
-      </div>
-      {menuOpen && (
-        <div className="absolute right-4 top-16 bg-white text-black shadow-lg rounded-lg p-4 w-48 md:hidden">
-          <ul className="space-y-4">
-            <li><Link to="/home" className="hover:text-blue-300">Home</Link></li>
-            <li> <Link to="/login" onClick={logout} className="hover:text-blue-300">Logout</Link></li>
-          </ul>
-        </div>
-      )}
-    </nav>
+        <ul
+          className={`md:flex text-2xl font-semibold  space-x-6 absolute md:static bg-[#d0e3e9] md:bg-transparent w-40 md:w-auto right-4 top-16 p-2 md:p-0 shadow-md md:shadow-none transition-all duration-300 ease-in-out rounded-lg ${
+            isOpen ? "block" : "hidden"
+          } md:flex-row md:items-center text-center"`}
+        >
+          <li className="hover:text-blue-600 cursor-pointer p-2">Home</li>
+          <li className="hover:text-blue-600 cursor-pointer p-2">Doctors</li>
+          <li className="hover:text-blue-600 cursor-pointer p-2">Contact</li>
+          <li className="hover:text-blue-600 cursor-pointer p-2"><Link to="/login" onClick={Logout}>Logout</Link></li>
+        </ul>
+      </nav>
   );
 };
+
 export default Navbar;

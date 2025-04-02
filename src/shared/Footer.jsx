@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 
 function Footer() {
     return (
-        <footer className="bg-blue-800 text-white p-6 text-center w-full">
+        <footer className="bg-[#002640] text-white p-6 text-center w-full">
           <div className="flex justify-center space-x-6 mb-4">
             <Link href="#" className="text-white text-2xl hover:text-gray-300"><FaGithub /></Link>
             <Link href="#" className="text-white text-2xl hover:text-gray-300"><FaInstagram /></Link>
