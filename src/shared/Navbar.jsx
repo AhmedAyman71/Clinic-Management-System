@@ -1,13 +1,17 @@
 import { useState } from "react";
 import { Menu } from "lucide-react";
-import { Link } from "react-router";
-import { deleteAuth } from "../helper";
+import { Link, useNavigate } from "react-router";
+import { deleteAuth, getAuth } from "../helper";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-
+  const auth=getAuth();
+  // console.log(auth);
+  
+  const navigate=useNavigate();
   const Logout =() => {
     deleteAuth()
+    navigate("/login")
   }
 
   return (
@@ -28,7 +32,8 @@ const Navbar = () => {
           <li className="hover:text-blue-600 cursor-pointer p-2">Home</li>
           <li className="hover:text-blue-600 cursor-pointer p-2">Doctors</li>
           <li className="hover:text-blue-600 cursor-pointer p-2">Contact</li>
-          <li className="hover:text-blue-600 cursor-pointer p-2"><Link to="/login" onClick={Logout}>Logout</Link></li>
+          {auth && <li className="hover:text-blue-600 cursor-pointer p-2">test</li>}
+          <li className="hover:text-blue-600 cursor-pointer p-2"><Link onClick={Logout}>Logout</Link></li>
         </ul>
       </nav>
   );

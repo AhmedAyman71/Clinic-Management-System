@@ -27,9 +27,8 @@ const Loginn = () => {
             identifier:login.email,
             password:login.password,
           })
-          console.log(data);
           setAuth(data)
-          navigate("/home")
+          navigate("/")
           setLogin({...login,loading:false})
         } catch (error) {
           console.log(error.response.data.error.message);
